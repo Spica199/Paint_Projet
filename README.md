@@ -4,12 +4,16 @@
 
 ## First Evolution ##
 
-ADD status bar using pattern "observer".
+ADD status bar.
 
 ## Second Evolution ##
 
-ADD grouping objetct using pattern "composite".
+ADD grouping objetct.
 
 ## Third Evolution ##
 
-ADD duplication of  selected forms using pattern "composite".
+ADD duplication of  selected forms.
+
+## Fourth Evolution ##
+
+ADD undo and redo fonctions.
