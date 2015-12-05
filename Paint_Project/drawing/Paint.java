@@ -10,7 +10,8 @@ import javax.swing.JPanel;
 import javax.swing.JLabel;
 import javax.swing.border.EtchedBorder;
 
-public class Paint implements Observer {
+public class Paint 
+    implements Observer {
 
 	private JFrame frame;
 	private JButton clearButton;
@@ -19,10 +20,18 @@ public class Paint implements Observer {
 	private JButton gatterButton;
 	private JButton scatterButton;
 	private JButton duplicateButton;
+        
+        private JButton undoButton;
+	private JButton redoButton;
+
 	private JPanel statusPanel;
 	private JPanel buttonsPanel;
 	private JPanel bottomPanel;
 	private JPanel mainPanel;
+        
+        private JPanel createPanel;
+	private JPanel interactPanel;
+        
 	private JLabel status;
 	private Drawing drawing;
 	private final int WIDTH = 800;
@@ -41,6 +50,8 @@ public class Paint implements Observer {
                 duplicateButton = new JButton("Duplicate");
 		gatterButton = new JButton("Gather");
 		scatterButton = new JButton("Scatter");
+                undoButton = new JButton(" <== ");
+		redoButton = new JButton(" ==> ");
 	
 		bottomPanel = new JPanel(new BorderLayout());
 		
@@ -52,6 +63,7 @@ public class Paint implements Observer {
 		status.setText("Number of Forms: <<\"0\">>");
                 statusPanel.setBorder(new EtchedBorder (EtchedBorder.LOWERED));
 		
+                
 		buttonsPanel = new JPanel();
 		buttonsPanel.add(clearButton);
 		buttonsPanel.add(circleButton);
@@ -59,6 +71,8 @@ public class Paint implements Observer {
 		buttonsPanel.add(gatterButton);
 		buttonsPanel.add(scatterButton);
 		buttonsPanel.add(duplicateButton);
+                buttonsPanel.add(undoButton);
+		buttonsPanel.add(redoButton);
 		
 		bottomPanel.add(statusPanel, BorderLayout.NORTH);
 		bottomPanel.add(buttonsPanel, BorderLayout.SOUTH);
@@ -71,6 +85,9 @@ public class Paint implements Observer {
 		gatterButton.addActionListener(new GroupButtonListener(drawing));
 		scatterButton.addActionListener(new SeparateButtonListener(drawing));
 		duplicateButton.addActionListener(new DuplicateButtonListener(drawing));
+                
+                undoButton.addActionListener(new UndoButtonListener(drawing));
+		redoButton.addActionListener(new RedoButtonListener(drawing));
 		
 		DrawingMouseListener l = new DrawingMouseListener(drawing);
 		drawing.addMouseListener(l);

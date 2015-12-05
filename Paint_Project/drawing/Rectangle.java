@@ -4,7 +4,8 @@ import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Point;
 
-public class Rectangle extends Shape {
+public class Rectangle 
+    extends Shape {
 
 	int width;
 	int height;
